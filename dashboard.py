@@ -457,13 +457,16 @@ with col_bi3:
     
     competitor_cheaper = len(df_filtered[
         df_filtered['price_vs_competitor'] > 1000])
-    st.error(
-        f"Products where competitor is Rs.1000+ cheaper: **{competitor_cheaper}**"
-    ) if competitor_cheaper > 0 else st.success(
-        "No major competitor price gaps found!")
+    if competitor_cheaper > 0:
+        st.error(
+            f"Products where competitor is Rs.1000+ cheaper: **{competitor_cheaper}**"
+        )
+    else:
+        st.success("No major competitor price gaps found!")
+   
 # ─────────────────────────────────────────
 # FOOTER
-# ─────────────────────────────────────────
+# ────────────────────────────────────────
 st.markdown("---")
 st.markdown(
     f"**Market Intelligence Dashboard** | "
